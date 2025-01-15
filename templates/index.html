@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Recommendations</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">  
+</head>
+<body>
+    <h1>Recipe Recommendation System</h1>
+
+    <p style="text-align: center; font-size: 20px; color: white;">What's on your mind?</p>
+
+    <form action="/recommend" method="POST" style="text-align: center;">
+        <label for="cuisine" style="font-size: 18px; color: white; display: block; margin-top: 20px;">Select Cuisine:</label>
+        <select id="cuisine" name="cuisine" style="padding: 10px; font-size: 16px;">
+            <option value="">Any</option>
+            {% for cuisine in cuisines %}
+                <option value="{{ cuisine }}">{{ cuisine }}</option>
+            {% endfor %}
+        </select>
+
+        <label for="course" style="font-size: 18px; color: white; display: block; margin-top: 20px;">Select Course:</label>
+        <select id="course" name="course" style="padding: 10px; font-size: 16px;">
+            <option value="">Any</option>
+            {% for course in courses %}
+                <option value="{{ course }}">{{ course }}</option>
+            {% endfor %}
+        </select>
+
+        <label for="diet" style="font-size: 18px; color: white; display: block; margin-top: 20px;">Select Diet:</label>
+        <select id="diet" name="diet" style="padding: 10px; font-size: 16px;">
+            <option value="">Any</option>
+            {% for diet in diets %}
+                <option value="{{ diet }}">{{ diet }}</option>
+            {% endfor %}
+        </select>
+
+        <button type="submit" style="padding: 10px 20px; margin-top: 20px; font-size: 16px;">Get Recommendations</button>
+    </form>
+
+    {% if error %}
+    <p style="color: red; text-align: center;">{{ error }}</p>
+    {% endif %}
+</body>
+</html>
