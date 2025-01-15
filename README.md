@@ -1,0 +1,1 @@
+This repository contains a web application built with Flask that recommends similar recipes based on a user's selection of cuisine, course, and diet. The app uses a pre-trained machine learning model to suggest recipes that are similar to the selected recipe, leveraging the power of cosine similarity based on ingredients.
